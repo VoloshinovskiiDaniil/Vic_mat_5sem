@@ -16,11 +16,11 @@ template<typename RealType, unsigned int N>
 DerivativeCoef<RealType, N>
 calcDerivativeCoef(const std::array<RealType, N>& points) noexcept
 {
-	Eigen::Matrix<RealType, N + 1, N + 1> A = Eigen::Matrix<RealType, N + 1, N + 1>::Ones();
-	/*for (unsigned int i = 0; i <= N; i++)
+	Eigen::Matrix<RealType, N + 1, N + 1> A;
+	for (unsigned int i = 0; i <= N; i++)
 	{
 		A(0, i) = 1;
-	}*/
+	}
 	for (unsigned int i = 1; i <= N; i++)
 	{
 		A(i, 0) = 0; // нулевой столбец заполнен нулями (кроме нулевой строки) - соответствует точке x0
