@@ -4,20 +4,23 @@
 #include<array>
 #include<eigen-3.4.0\Eigen\Dense>
 
-using namespace std;
 
 template<typename RealType, unsigned int N>
 struct DerivativeCoef
 {
 	RealType centralCoef;
-	array<RealType, N> otherCoeffs;
+	std::array<RealType, N> otherCoeffs;
 };
 
 template<typename RealType, unsigned int N>
 DerivativeCoef<RealType, N>
-calcDerivativeCoef(const array<RealType, N>& points) noexcept
+calcDerivativeCoef(const std::array<RealType, N>& points) noexcept
 {
 	Eigen::Matrix<RealType, N + 1, N + 1> A = Eigen::Matrix<RealType, N + 1, N + 1>::Ones();
+	/*for (unsigned int i = 0; i <= N; i++)
+	{
+		A(0, i) = 1;
+	}*/
 	for (unsigned int i = 1; i <= N; i++)
 	{
 		A(i, 0) = 0; // нулевой столбец заполнен нулями (кроме нулевой строки) - соответствует точке x0
@@ -32,21 +35,25 @@ calcDerivativeCoef(const array<RealType, N>& points) noexcept
 
 	RealType centralCoef = x(0);
 
-	array<RealType, N> coefs;
+	std::array<RealType, N> coefs;
 	for (unsigned int i = 0; i < N; i++)
+	{
 		coefs[i] = x(i + 1);
+	}
 
 	return DerivativeCoef<RealType, N>{centralCoef, coefs};
 }
 
 template<typename RealType, unsigned int N>
-RealType dif(const RealType x0, const RealType h, const array<RealType, N>& points)
+RealType dif(const RealType x0, const RealType h, const std::array<RealType, N>& points)
 {
 	DerivativeCoef<double, N> coefs = calcDerivativeCoef<RealType, N>(points);
 
 	RealType dif_x0 = coefs.centralCoef * exp(x0) / h;
 	for (unsigned int i = 0; i < N; i++)
+	{
 		dif_x0 += coefs.otherCoeffs[i] * exp(x0 + points[i] * h) / h;
+	}
 
 	return dif_x0;
 }
