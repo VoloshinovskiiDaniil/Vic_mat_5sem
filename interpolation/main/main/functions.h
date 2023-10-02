@@ -47,7 +47,6 @@ private:
 public:
 
     NewtonInterpolator(const std::array<xType, N>& points, const std::array<yType, N>& values) noexcept
-       // grid{points}, coeffs{values}
     {
         for (unsigned i = 0; i < N; i++)
         {
