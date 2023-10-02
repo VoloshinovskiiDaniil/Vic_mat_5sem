@@ -10,7 +10,6 @@ int main()
 	const double last = 2;
 	const double step = 0.0001;
 
-	//N = 3
 
 	std::ofstream data3_un("data3_uniform.txt");
 	data3_un.precision(15);
@@ -68,7 +67,6 @@ int main()
 	data3_un.close();
 	data3_ch.close();
 
-	//N = 4
 
 	std::ofstream data4_un("data4_uniform.txt");
 	data4_un.precision(15);
@@ -125,8 +123,6 @@ int main()
 	data4_un.close();
 	data4_ch.close();
 
-
-	//N = 5
 
 	std::ofstream data5_un("data5_uniform.txt");
 	data5_un.precision(15);
