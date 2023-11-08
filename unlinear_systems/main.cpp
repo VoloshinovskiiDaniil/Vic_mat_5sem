@@ -21,8 +21,8 @@ double func_2(double x)
 int main()
 {
 	std::cout.precision(6);
-	std::cout << "1st solution:		" << "x = " << solve(func_1, -0.1861978, 0.5, 16) << "	" << "y = " << solve(func_2, -0.339661, 0.5, 16) << std::endl;
-	std::cout << "2nd solution:		" << "x = " << solve(func_1, 0.1861978, -0.5, 16) << "	" << "y = " << solve(func_2, -0.339661, -0.5, 16) << std::endl;
+	std::cout << "1st solution:		" << "x = " << solve(func_1, -0.2, 0.5, 10) << "	" << "y = " << solve(func_2, -0.2, 0.5, 10) << std::endl;
+	std::cout << "2nd solution:		" << "x = " << solve(func_1, 0.2, -0.5, 10) << "	" << "y = " << solve(func_2, -0.2, -0.5, 10) << std::endl;
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
